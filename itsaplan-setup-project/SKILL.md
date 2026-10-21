@@ -1,15 +1,15 @@
 ---
 name: itsaplan-setup-project
-description: Set up a new Itsaplan project for "1 Issue = 1 UI" (columns, types, labels, 7 templates, Table view, convention Doc, optional initiative). Use for "initial project", "ตั้งค่าโปรเจกต์", "สร้างโปรเจกต์ใหม่".
+description: Set up a new Itsaplan project for "1 Issue = 1 UI" (columns, types, labels, 7 templates, Table view, optional initiative). Use for "initial project", "ตั้งค่าโปรเจกต์", "สร้างโปรเจกต์ใหม่".
 ---
 
 # Itsaplan — Setup Project
 
-Run in order; each step: check first, create only what's missing. Use ids from `get_project` only; match columns by `stateType`. Template/Doc content in Thai. Never delete; ask when unclear.
+Run in order; each step: check first, create only what's missing. Use ids from `get_project` only; match columns by `stateType`. Template content in Thai. Never delete; ask when unclear.
 
 ## Ask when
 - Key/name/team missing (`list_projects`; several teams → `list_teams`).
-- Team has a BA? If no, skip Design/Spec templates and note it in the Doc.
+- Team has a BA? If no, skip Design/Spec templates and tell the user.
 - Role names for Spec template (default `FleetManagement:{Role}`).
 
 ## 1. Project
@@ -48,11 +48,8 @@ Bodies:
 {"filters":{"conditions":[]},"display":{"layout":"table","group":"initiative","subgroup":"none","sort":{"field":"status","dir":"asc"},"properties":["priority","status","startDate","dueDate","assignee","id"],"showSubtasks":false,"collapseSubtasks":false,"separateSubtasks":false,"showEmptyGroups":false,"showLinks":false,"hiddenGroups":[],"collapsedGroups":[],"pinnedGroup":null,"timelineScale":"week","timelineCollapseAll":false,"calendarDateField":"dueDate","weekStart":0}}
 ```
 
-## 7. Convention Doc
-If `list_documents` has none: `create_document` "กติกาการแตกงาน: 1 Issue = 1 งาน (1 UI)" (icon 📐), Thai: principles, subtask table (UI / API-only), naming `[ชนิด] ชื่อหน้า/แท็บ (/path)`, order Design → Spec → Database → Backend → Frontend, details in checklists, shared Backend on one Issue referenced by `FM-xx`. Link with `link_document_initiative` if an Initiative exists.
-
-## 8. Initiative (optional)
+## 7. Initiative (optional)
 User names goal/deadline → `create_initiative` (owner `wanatat.c`); Issues attach via `initiativeId`.
 
 ## Done
-Run `get_project`, `list_issue_templates`, `list_views`, `list_documents`; report created vs existing.
+Run `get_project`, `list_issue_templates`, `list_views`; report created vs existing.
