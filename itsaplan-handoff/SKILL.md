@@ -1,19 +1,27 @@
 ---
 name: itsaplan-handoff
-description: Pass work on in Itsaplan - close a finished subtask (column, assignee, summary comment) and open the next for the receiver (BA→Dev, Dev→Dev, FIX); close the parent when all done. Use for "ส่งต่องาน", "handoff", "ปิด subtask", "ส่งให้ Dev". Read AGENT.md first.
+description: Pass work on in Itsaplan - close a finished subtask (column, assignee, summary comment) and open the next for the receiver (BA→Dev, Dev→Dev, FIX); close the parent when all done. Use for "ส่งต่องาน", "handoff", "ปิด subtask", "ส่งให้ Dev".
 ---
 
 # Itsaplan — Handoff
 
-Handoff = **move column + change assignee + summary comment**. Shared rules: `AGENT.md`.
+Handoff = **move column + change assignee + summary comment**.
+
+## Rules
+- Pick columns by `stateType` (backlog/unstarted/started/completed/canceled) from `get_project`; never invent ids. `FM-12` → `get_issue_by_number`.
+- Write all comments in Thai. Never delete; never edit `[Spec]` business content (comment to BA instead); no secrets/real customer data.
+
+## Team & assignees
+BA `savepop48566` = `[Design]`/`[Spec]`; `wuthichai.chuichaeng` = `[Database]`/`[Backend]`; `jomchai.suk09` = `[Frontend]`; PM `wanatat.c`.
+Call `list_members` first: only `wanatat.c` → all to them; 2 members with `wanatat.c` owner → all to the other; else use roles above (person not a member → fall back or ask). Propose receiver, ask "จะใช้คนตามนี้เลยไหม?", assign only after confirmation, userIds only from `list_members`.
 
 ## Order
-`[Design]` (BA) → `[Spec]` (BA) → `[Database]` → `[Backend]` → `[Frontend]`. Skip missing subtasks; next existing one receives. Frontend may start early only against a user-confirmed Swagger contract. Roles/assignees per `AGENT.md`.
+`[Design]` (BA) → `[Spec]` (BA) → `[Database]` → `[Backend]` → `[Frontend]`. Skip missing subtasks; next existing one receives. Frontend may start early only against a user-confirmed Swagger contract.
 
 `[FIX]` parent: no Design/Spec; BA opens first existing subtask (`[Database]` → `[Backend]` → `[Frontend]`) with a comment pointing to the parent.
 
 ## Ask when
-- Receiver: propose per `AGENT.md`, ask "จะใช้คนตามนี้เลยไหม?" before assigning.
+- Receiver unconfirmed (see Team & assignees).
 - Sender has unchecked checklist items/blank Handoff fields → ask whether to proceed.
 - Deliverable missing or location unclear.
 

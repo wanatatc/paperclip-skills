@@ -1,11 +1,27 @@
 ---
 name: itsaplan-create-task
-description: Create one Itsaplan Issue (UI page, tab, dialog, or API) plus applicable subtasks ([Design], [Spec], [Database], [Frontend], [Backend]). Use for "สร้าง task", "สร้างงาน", new page/API task. Read AGENT.md first.
+description: Create one Itsaplan Issue (UI page, tab, dialog, or API) plus applicable subtasks ([Design], [Spec], [Database], [Frontend], [Backend]). Use for "สร้าง task", "สร้างงาน", new page/API task.
 ---
 
 # Itsaplan — Create Task
 
-Shared rules (ids, stateType, Thai, assignees, dates): `AGENT.md`.
+Convention: **1 Issue = 1 job = 1 UI page** (multi-tab page → 1 tab = 1 Issue). Details go in checklists, not extra subtasks.
+
+## Rules
+- Resolve ids with `get_project` (key e.g. `FM`); never invent or reuse ids across projects. Pick columns by `stateType`, types/labels by name.
+- Check duplicates before creating. `FM-12` → `get_issue_by_number`.
+- All text written to Itsaplan (title, description, comment, checklist) in Thai. Ask when unclear; never delete (use `archive_issue`); no secrets/real customer data.
+- Dates `YYYY-MM-DD`.
+
+## Team & assignees
+| Username | Role | Owns |
+| --- | --- | --- |
+| `wanatat.c` | PM | Initiatives |
+| `savepop48566` | BA | `[Design]`, `[Spec]` |
+| `wuthichai.chuichaeng` | Dev DB/Backend | `[Database]`, `[Backend]` |
+| `jomchai.suk09` | Dev Frontend | `[Frontend]` |
+
+Call `list_members` first: only `wanatat.c` → all roles to them; 2 members with `wanatat.c` owner → all to the other; else use the table (role person not a member → fall back to the above or ask). Ask "จะใช้คนตามนี้เลยไหม?" with the proposal per subtask; assign only after confirmation, userIds only from `list_members`.
 
 ## 1. Classify
 
@@ -30,7 +46,7 @@ Shared Backend across Issues: put `[Backend]` on one Issue, reference by `FM-xx`
 - Unclear one page vs several tabs; route missing; DB change unclear; BA unknown.
 - Start date first (none → today), then due date (none → empty; not before start).
 - Priority/initiative unknown → ask once; default priority `medium`; ask initiative only if several active.
-- Assignees: per `AGENT.md`, confirm before assigning.
+- Assignees: confirm before assigning (see Team & assignees).
 
 ## 3. Resolve
 `get_project` (Backlog column, types, labels `Frontend`/`Backend`), `list_initiatives` if needed, `list_issue_templates` (use as description skeleton), `search_issues` for duplicates.

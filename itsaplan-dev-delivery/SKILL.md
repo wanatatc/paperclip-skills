@@ -1,11 +1,13 @@
 ---
 name: itsaplan-dev-delivery
-description: Guide a Dev through an Itsaplan [Database]/[Frontend]/[Backend] subtask - review Spec, propose plan for approval, keep a status block, resume, finish. Use when a Dev starts, resumes, or finishes such a subtask. Read AGENT.md first.
+description: Guide a Dev through an Itsaplan [Database]/[Frontend]/[Backend] subtask - review Spec, propose plan for approval, keep a status block, resume, finish. Use when a Dev starts, resumes, or finishes such a subtask.
 ---
 
 # Itsaplan — Dev Delivery
 
-These subtasks are delivery task lists. The tracker records what is done/missing so any session can resume — not how code was written. Shared rules: `AGENT.md`.
+These subtasks are delivery task lists. The tracker records what is done/missing so any session can resume — not how code was written.
+
+Rules: `FM-12` → `get_issue_by_number`; pick columns by `stateType` (`started`, `completed`) from `get_project`. Write everything to Itsaplan in Thai. Never delete; no secrets/real customer data; never edit `[Spec]` business content (comment to BA). Details are checklist items, not extra subtasks.
 
 ## Stop and ask when
 - `[Spec]` missing or has open "คำถามที่ยังค้าง" → tell user, don't plan. (`[FIX]` parent: use "รายการที่ต้องแก้" as the spec.)

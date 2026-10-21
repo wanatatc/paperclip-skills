@@ -1,11 +1,20 @@
 ---
 name: itsaplan-fix-task
-description: Record a BA fix list for existing work as one parent "[FIX] ..." Bug Issue plus [Database]/[Frontend]/[Backend] subtasks, then hand off to Dev. Use for "แก้ bug", "[FIX]", "รายการที่ต้องแก้". Read AGENT.md first.
+description: Record a BA fix list for existing work as one parent "[FIX] ..." Bug Issue plus [Database]/[Frontend]/[Backend] subtasks, then hand off to Dev. Use for "แก้ bug", "[FIX]", "รายการที่ต้องแก้".
 ---
 
 # Itsaplan — Fix Task
 
-For fixing existing work, not new features. Shared rules (ids, Thai, assignees, dates): `AGENT.md`.
+For fixing existing work, not new features.
+
+## Rules
+- Resolve ids with `get_project` (key e.g. `FM`); never invent or reuse ids across projects. Pick columns by `stateType`, types/labels by name.
+- All text written to Itsaplan in Thai. Ask when unclear; never delete (use `archive_issue`); no secrets/real customer data.
+- Dates `YYYY-MM-DD`: ask start date first (none → today), then due date (none → empty; not before start).
+
+## Team & assignees
+BA `savepop48566` (fix list); `[Database]`/`[Backend]` → `wuthichai.chuichaeng`; `[Frontend]` → `jomchai.suk09`; PM `wanatat.c`.
+Call `list_members` first: only `wanatat.c` → all to them; 2 members with `wanatat.c` owner → all to the other; else use roles above (person not a member → fall back or ask). Ask "จะใช้คนตามนี้เลยไหม?" per subtask; assign only after confirmation, userIds only from `list_members`.
 
 ## 1. Gather (ask BA one question at a time)
 1. มีอะไรต้องแก้บ้าง (each = one numbered item)
@@ -35,7 +44,7 @@ Backlog, type `Bug`, title `[FIX] ชื่อหน้า/งาน (/route)`, 
 ```
 
 ## 5. Subtasks
-`parentId` = parent id; type `Task`; Backlog; labels `Frontend`/`Backend` (none for Database); title `[Kind] [FIX] ชื่อหน้า/งาน`; dates = parent's unless user says otherwise; description placeholder "แผนงานจะเสนอตอนเริ่มทำ — ดูรายการที่ต้องแก้ใน [FIX] หลัก" (Dev writes checklist per `itsaplan-dev-delivery`); assignee per `AGENT.md` after confirmation.
+`parentId` = parent id; type `Task`; Backlog; labels `Frontend`/`Backend` (none for Database); title `[Kind] [FIX] ชื่อหน้า/งาน`; dates = parent's unless user says otherwise; description placeholder "แผนงานจะเสนอตอนเริ่มทำ — ดูรายการที่ต้องแก้ใน [FIX] หลัก" (Dev writes checklist per `itsaplan-dev-delivery`); assignee per Team & assignees, after confirmation.
 
 ## 6. Verify and hand off
 `get_issue` parent; report table (`FM-xx`, title, kind, assignee, skipped + reason). Then BA hands off per `itsaplan-handoff`: open first existing subtask in order `[Database]` → `[Backend]` → `[Frontend]` as `unstarted`.

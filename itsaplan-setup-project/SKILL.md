@@ -1,11 +1,11 @@
 ---
 name: itsaplan-setup-project
-description: Set up a new Itsaplan project for "1 Issue = 1 UI" (columns, types, labels, 7 templates, Table view, convention Doc, optional initiative). Use for "initial project", "ตั้งค่าโปรเจกต์", "สร้างโปรเจกต์ใหม่". Read AGENT.md first.
+description: Set up a new Itsaplan project for "1 Issue = 1 UI" (columns, types, labels, 7 templates, Table view, convention Doc, optional initiative). Use for "initial project", "ตั้งค่าโปรเจกต์", "สร้างโปรเจกต์ใหม่".
 ---
 
 # Itsaplan — Setup Project
 
-Run in order; each step: check first, create only what's missing. Shared rules: `AGENT.md`.
+Run in order; each step: check first, create only what's missing. Use ids from `get_project` only; match columns by `stateType`. Template/Doc content in Thai. Never delete; ask when unclear.
 
 ## Ask when
 - Key/name/team missing (`list_projects`; several teams → `list_teams`).
