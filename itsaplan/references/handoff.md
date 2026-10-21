@@ -6,13 +6,15 @@ Goal: when one subtask is finished, close it properly and pass the work to the n
 
 `[Design]` (BA) → `[Spec]` (BA) → `[Database]` (Dev, if present) → `[Backend]` (Dev) → `[Frontend]` (Dev)
 
+For a `[FIX]` parent (see `fix-task.md`) there is no Design or Spec. The BA's fix list in the parent is the handoff: the BA opens the first existing subtask in order `[Database]` → `[Backend]` → `[Frontend]` directly, with the summary comment pointing to the `[FIX]` parent.
+
 - `[Database]` and `[Backend]` come before `[Frontend]` when the Frontend needs a new endpoint. Frontend may start early only against a Swagger contract the user confirms.
 - Skip steps whose subtask does not exist; the next existing subtask is the receiver.
-- Roles: `[Design]`/`[Spec]` = BA. `[Database]`/`[Backend]`/`[Frontend]` = Dev.
+- Roles: `[Design]`/`[Spec]` = BA (`savepop48566`). `[Database]`/`[Backend]` = Dev DB/Backend (`wuthichai.chuichaeng`). `[Frontend]` = Dev Frontend (`jomchai.suk09`). See the team roles table in `SKILL.md`.
 
 ## Ask when
 
-- **Who is the receiver?** `get_project.assignees` lists members. If there is more than one candidate for the receiving role, or the project has only one member, ask the user who should be assigned (or whether to leave unassigned).
+- **Who is the receiver?** Follow the "Team roles" section in `SKILL.md`: check `list_members` for the project first (solo project → `wanatat.c`; owner plus one other → that other person; otherwise the role table). Propose the receiver and ask "จะใช้คนตามนี้เลยไหม?" before assigning. Ask separately only if the role maps to no project member or the user wants someone else.
 - A sender subtask has unchecked checklist items or blank Handoff fields and the user asks to pass it on → ask whether to proceed anyway.
 - The deliverable (Design HTML, Handoff text) is missing or its location is unclear.
 

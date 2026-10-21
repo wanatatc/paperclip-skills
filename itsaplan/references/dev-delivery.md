@@ -12,7 +12,7 @@ These three subtasks are **delivery task lists**, not design documents. The trac
 
 Trigger: the Dev says they are starting a `[Database]`, `[Frontend]`, or `[Backend]` subtask.
 
-1. Read the parent Issue, its `[Design]` and `[Spec]` subtasks (`get_issue`, `list_attachments`, `view_issue_images` if needed), and the status block / comments of sibling delivery subtasks.
+1. Read the parent Issue, its `[Design]` and `[Spec]` subtasks (`get_issue`, `list_attachments`, `view_issue_images` if needed), and the status block / comments of sibling delivery subtasks. For a `[FIX]` parent there is no Spec: the "รายการที่ต้องแก้" list in the parent description is the spec.
 2. **Review back to the Dev first** (short, Thai): what the Spec says this layer must deliver, in 3–6 lines, plus anything unclear or missing. Wait for the Dev to confirm or correct. Do not skip this even if the Spec looks complete.
 3. **Propose a plan** as a checklist of sub-tasks for this layer and show it to the Dev *before* writing it into Itsaplan. Each item is small and checkable (one session's worth), starts with a verb, and where possible names the Spec acceptance criterion it satisfies (`AC-2`). Add a final item for verification (what will be run or looked at).
    - Scale the plan to the work: a one-line change needs no plan; a normal single-page layer gets a short checklist; a change touching schema, permissions, or several modules gets a fuller plan with risks and open questions.

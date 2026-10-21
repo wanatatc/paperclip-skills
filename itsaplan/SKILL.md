@@ -11,10 +11,30 @@ This skill is a router. Read **only** the reference file that matches the reques
 | --- | --- |
 | Set up a new project (columns, labels, templates, Table view, convention doc) | `references/initial-project.md` |
 | Create a task / page / API (Issue + subtasks) | `references/create-task.md` |
+| Record a fix list for existing work (`[FIX]` + Database/Frontend/Backend subtasks) | `references/fix-task.md` |
 | Pass work on (finish a subtask, hand BA → Dev, close a parent) | `references/handoff.md` |
 | Dev starts or resumes `[Database]`/`[Frontend]`/`[Backend]` (review Spec, propose plan, keep status) | `references/dev-delivery.md` |
 
 If a request spans several topics (e.g. "create the task, then hand off Design"), read each file in order.
+
+## Team roles (PM Wan)
+
+Members are the same across the team's projects. Use these roles to pick the assignee and the initiative owner. Usernames come from `list_members`; never guess a userId.
+
+| Username | Role | Owns |
+| --- | --- | --- |
+| `wanatat.c` | PM | Initiatives (`initiativeId`) |
+| `savepop48566` | BA | `[Design]`, `[Spec]`, and the BA side of `[FIX]` handoff |
+| `wuthichai.chuichaeng` | Dev (Database / Backend) | `[Database]`, `[Backend]` |
+| `jomchai.suk09` | Dev (Frontend) | `[Frontend]` (mainly) |
+
+**Before assigning, check the project's members** (`list_members` with the project key). Projects differ in size, so apply this order:
+
+1. **Solo project** (only `wanatat.c`): assign every role to `wanatat.c`.
+2. **Two members, one of them `wanatat.c` as owner**: assign every role to the other member, not `wanatat.c`.
+3. **Otherwise** (typically the 4-person setup): assign by the table above. If a role's person is not a member of this project, use the rule for that case (1 or 2) or ask.
+
+Always ask the user before writing assignees: "จะใช้คนตามนี้เลยไหม?" and list the proposed assignee per subtask. Do not assign until the user confirms. Ask separately only when the role does not map to one person (e.g. a `[Backend]` that also needs Frontend work from `jomchai.suk09`).
 
 ## Language
 

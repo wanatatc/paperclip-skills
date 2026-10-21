@@ -32,7 +32,7 @@ Shared work: if two Issues need the same Backend (e.g. edit dialog and new page)
 - No BA is stated for this project and the Design/Spec question matters (the user is BA in this repo's team, but confirm on a new project).
 - **Start date (`startDate`) — ask this first, before anything else about scheduling.** "วันที่เริ่มงานคือวันไหน?" If the user does not give one (no answer, "ไม่รู้", "วันนี้", or they just want it created), use **today's date** (from the current date in the environment, format `YYYY-MM-DD`). Never leave it empty.
 - **Due date (`dueDate`) — ask after the start date.** "วันที่สิ้นสุด/กำหนดส่งคือวันไหน?" If not given, leave it empty (do not invent one). Due date must not be earlier than the start date; if it is, point it out and ask again.
-- Priority or initiative are not given and cannot be inferred → ask once for both; default priority `medium`, ask for initiative only when several are active.
+- Priority or initiative are not given and cannot be inferred → ask once for both; default priority `medium`. Initiatives are owned by the PM (`wanatat.c`), so ask the PM's choice only when several are active.
 
 ## Step 3 — Resolve ids
 
@@ -75,7 +75,7 @@ Rules:
 - Do not pre-fill the Handoff section of `[Spec]` with guesses. Leave fields blank for BA.
 - **`[Spec]` is business-level.** Its skeleton asks for: วัตถุประสงค์/ผู้ใช้, ขั้นตอนการใช้งาน, ข้อมูลที่เกี่ยวข้อง (field names as the business calls them, required or not, sample values), กฎ business, ใครทำอะไรได้, กรณียกเว้น, Acceptance criteria as scenarios, คำถามที่ยังค้าง. Field names are welcome; technical design is not (no endpoint paths, HTTP methods, request/response JSON, DTOs, column types, table/index design, status codes). Never put those in a Spec skeleton, and if the user dictates them, keep only the business meaning and tell the user the technical part belongs in `[Backend]`/`[Database]`.
 - The "ต้องมี Database หรือไม่" question is **not** a Spec field; decide it with the user at creation time (see "Ask when").
-- Do not assign people unless the user says who (see `handoff.md`).
+- Do not assign people unless the user says who or confirms the proposed assignee. Proposed assignees come from `SKILL.md` "Team roles", after `list_members` for this project (see `handoff.md`).
 
 ## Step 6 — Verify and report
 
